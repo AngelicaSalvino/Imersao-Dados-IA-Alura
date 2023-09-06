@@ -1,0 +1,69 @@
+IMERSÃO DADOS IA - ALURA
+
+Prompts utilizados no ChatGPT:
+
+1º
+Tenho uma base de dados com produtos da Amazon que contém 10 colunas, sendo elas: 
+ID do produto, nome do produto, categoria, desconto do produto, valor do produto, porcentagem de desconto, avaliação, quandidade de pessoas que avaliaram, sobre o produto e o link de cada produto.
+Para fazer uma análise exploratória pelo Google Sheets, como posso fazer?
+
+2º
+Tenho duas colunas de valores no google sheets e quero fazer a porcentagem de diferença dos valores, como posso fazer?
+Considerar as colunas C e E, sendo a coluna C o valor do produto com desconto e a coluna E o valor integral do produto.
+
+3º
+Tenho uma coluna que está com valores de rúpia e quero transformar em real brasileiro, considerando uma variável que é o valor de conversão entre as duas moedas. Qual fórmula posso utilizar no Google Sheets?
+
+Outra opção do Google Finance: 
+=GoogleFinance("CURRENCY:INRBRL")*F15
+
+4º 
+Como posso fazer um comando de um filtro para notas acima de 4.5 no GoogleSheets, sendo minha coluna de notas a coluna H.
+
+5º
+Como posso fazer faixa de cores para os valores de porcentagem no googlesheets?
+
+6º
+Tenho uma coluna de preços de produtos na minha tabela do GoogleSheets e quero fazer um Countif de valores abaixo de 50 reais, valores entre 50 e 500 reais e valores maiores que 500 reais.
+
+=COUNTIF(dados!G:G; "<50")
+
+=COUNTIF(dados!G:G; ">=50") - =COUNTIF(dados!G:G; ">500")
+
+7º
+Tenho uma coluna de valores de produtos e já classifiquei ela entre:
+-valores menores de 50 reais;
+- entre 50 e 500 reais;e
+- maiores que 500 reais
+Quero saber a média dos valores dentro desses intervalos.
+Como posso fazer isso no googlesheets?
+
+8º
+Troque MÉDIA.SE por AVERAGEIF nas funções acima.
+
+9º
+No GoogleSheets tenho uma coluna de avaliações de cada produto (na coluna H) e uma coluna com a quantidade de pessoas que avaliaram esse produto (na coluna I). Quero fazer uma média ponderada entre a quantidade de pessoas que avaliaram em relação à nota final. Existe alguma fórmula que pode me ajudar com isso?
+
+=SUMPRODUCT(dados!H2:H ; dados!I2:I) / SUM(dados!I2:I)
+
+10º 
+Como posso criar um gráfico baseado em um filtro de avaliações acima de 4,5 na tabela dados, dentro do GoogleSheets?
+
+11º
+Qual a melhor visualização para um COUNTIF no GoogleSheets e como posso fazê-la?
+
+12º
+Como posso separar os valores de texto de uma célula, sabendo que a separação ocorre ao utilizar o caractere "|". Eu só quero o texto antes do primeiro caracter "|" aparecer.
+
+=LEFT( C2; SEARCH("|"; C2) -1)
+
+13º
+Como posso separar os valores de texto de uma célula C2, sabendo que a separação ocorre ao utilizar o caracter "|". Eu só quero o texto entre o primeiro caracter "|" e o segundo caracter "|".
+
+=MID (C2; FIND("|"; C2) +1; FIND("|"; C2; FIND("|"; C2) +1) - FIND("|";C2) -1)
+
+
+14º
+
+
+
