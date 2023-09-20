@@ -63,7 +63,7 @@ Como posso separar os valores de texto de uma célula C2, sabendo que a separaç
 =MID (C2; FIND("|"; C2) +1; FIND("|"; C2; FIND("|"; C2) +1) - FIND("|";C2) -1)
 
 
-14º
+
 
 
 
