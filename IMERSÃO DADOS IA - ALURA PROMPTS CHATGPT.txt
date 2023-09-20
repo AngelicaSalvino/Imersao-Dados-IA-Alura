@@ -62,6 +62,129 @@ Como posso separar os valores de texto de uma célula C2, sabendo que a separaç
 
 =MID (C2; FIND("|"; C2) +1; FIND("|"; C2; FIND("|"; C2) +1) - FIND("|";C2) -1)
 
+CONECTE PLANILHAS + ENGENHARIA DE PROMPTS
+
+CONECTAR BASES DIFERENTES COM 1 COLUNA EM COMUM - GOOGLE SHEETS
+14º
+Como consigo conectar 2 tabelas diferentes (dados e avaliações) que tem uma coluna em comum (Coluna A) usando o GoogleSheets
+
+=VLOOKUP( A2 ; avaliacoes!A:G ; 2 ; FALSE)
+
+15º
+Extensão SheetGPT
+PROMPTs
+
+=GPT("Traduza essa avaliação do inglês para o português" &N2)
+
+=GPT("Faça um resumo de até 25 palavras do texto em português" &O2)
+
+=GPT("Faça um ranking do sentimento do texto, escolha um desses sentimentos: muito positivo, positivo, neutro, ruim, muito ruim" &O2)
+
+16º
+PROMPT QUE ENSINA O CHAT A PENSAR:
+Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma de valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem e me diga qual é o meu resultado final?
+
+R$10.000,00
+R$20.000,00
+R$50.000,00
+R$60.000,00
+
+Resposta: Nessa lista, existem 4 valores. Há 2 valores acima de R$40.000,00 que são R$50.000,00 e R$60.000,00. A soma desses valores é R$110.000,00. O resultado fina é 30% da soma desses valores, portanto, 30% de R$110.000,00 que resulta em R$33.000,00.
+
+Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma de valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem e me diga qual é o meu resultado final?
+
+COLAR OS VALORES QUE PRECISAM SER ANALISADOS (DADOS "REAIS")
+
+Resposta:
+
+17º
+
+Abrir o Colab.new da google (ambiente jupyter)
+Tenho uma planilha em csv e quero fazer uma análise exploratória nela dentro do Google Colab, como posso fazer?
+
+Linhas de códigos utilizadas:
+
+Carregamento bibliotecas
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+Carregamento das bases de dados
+dados = pd.read_csv('/content/Dados_Imersão [faça uma cópia para editar] - dados.csv')
+avaliacoes = pd.read_csv('/content/Avaliacoes [Faça uma cópia para editar] - avaliacoes.csv')
+
+Comandos inciais
+dados.head() para visualizar as primeiras linhas do DataFrame.
+dados.info() para obter informações sobre os tipos de dados e valores ausentes.
+dados.describe() para obter estatísticas resumidas das colunas numéricas.
+dados.columns para listar as colunas disponíveis.
+
+Como os dados estão crus e precisam ser corrigidos serão solicitados os comandos para o cahtGPT, seguem os prompts:
+
+Tenho uma coluna de dados de valores em rúpia indiana, porém quero remover o símbolo da moeda, como posso fazer no python?
+
+dados['actual_price'] = dados['actual_price'].str.replace('₹', '')
+dados['actual_price'] = dados['actual_price'].str.replace('.', '')
+dados['actual_price'] = dados['actual_price'].str.replace(',', '.')
+dados['actual_price'] = pd.to_numeric(dados['actual_price'])
+
+dados['product_price'] = dados['product_price'].str.replace('₹', '')
+dados['product_price'] = dados['product_price'].str.replace('.', '')
+dados['product_price'] = dados['product_price'].str.replace(',', '.')
+dados['product_price'] = dados['product_price'].astype(float)
+
+dados['rating'] = dados['rating'].str.replace(',', '.')
+
+Prompt do CHATGPT Para Criação de Gráficos
+
+Tenho uma coluna de avaliações de produtos que se chama rating e quero fazer um gráfico de barras fazendo contagem de todos os valores acima de 4.5 como posso fazer no python? Sendo meu dataframe chamado dados
+
+avaliacoes_acima_de_45 = dados[dados['rating'] > 4.5]
+avaliacoes_contagem = avaliacoes_acima_de_45['rating'].value_counts().sort_index()
+
+plt.figure(figsize=(10,6))
+sns.barplot(x=avaliacoes_contagem.index, y=avaliacoes_contagem.values)
+plt.title('Contagens de Avaliações Acima de 4.5')
+plt.xlabel('Avaliacão')
+plt.ylabel('Contagem')
+plt.show()
+
+Prompt
+Tenho uma coluna de valores de produtos chamada actual_price, onde quero fazer 3 filtros: valores até 50 rúpias, valores entre 50 rúpias e 500 rúpias e valores maiores que 500 rúpias. Depois de fazer o filtro quero fazer um gráfico de pizza para mostrar a contagem de produtos de cada faixa de valor e com o maior valor sendo destacado.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+# Filtre os valores até 50 rúpias
+faixa_1 = dados[dados['actual_price'] <= 50]
+
+# Filtre os valores entre 50 e 500 rúpias
+faixa_2 = dados[(dados['actual_price'] > 50) & (dados['actual_price'] <= 500)]
+
+# Filtre os valores acima de 500 rúpias
+faixa_3 = dados[dados['actual_price'] > 500]
+contagem_faixa_1 = len(faixa_1)
+contagem_faixa_2 = len(faixa_2)
+contagem_faixa_3 = len(faixa_3)
+
+# Defina os rótulos para as fatias do gráfico
+rotulos = ['Até 50 rúpias', 'Entre 50 e 500 rúpias', 'Acima de 500 rúpias']
+
+# Defina os valores correspondentes às contagens em cada faixa
+valores = [contagem_faixa_1, contagem_faixa_2, contagem_faixa_3]
+
+# Destaque a faixa com o maior valor
+explode = (0.1, 0.1, 0.2)
+
+# Crie o gráfico de pizza
+plt.pie(valores, labels=rotulos, autopct='%1.1f%%', explode=explode, shadow=True)
+plt.axis('equal')  # Assegura que o gráfico seja uma circunferência
+
+# Adicione um título
+plt.title('Contagem de Produtos por Faixa de Preço')
+
+# Exiba o gráfico
+plt.show()
 
 
 
