@@ -1,192 +1,72 @@
-IMERSÃO DADOS IA - ALURA
+# Análise de Dados com Google Sheets e Python
 
-Prompts utilizados no ChatGPT:
+## Introdução
+Este repositório contém informações e scripts relacionados ao curso "IMERSÃO DADOS IA - ALURA", onde foram abordadas diversas tarefas relacionadas à análise de dados, tanto no Google Sheets quanto no ambiente Python, com foco na manipulação e visualização de informações.
 
-1º
-Tenho uma base de dados com produtos da Amazon que contém 10 colunas, sendo elas: 
-ID do produto, nome do produto, categoria, desconto do produto, valor do produto, porcentagem de desconto, avaliação, quandidade de pessoas que avaliaram, sobre o produto e o link de cada produto.
-Para fazer uma análise exploratória pelo Google Sheets, como posso fazer?
+## Tópicos Abordados
+Aqui estão os tópicos e tarefas que foram cobertos durante o curso, com prompts utilizados no ChatGPT para auxiliar nas atividades:
 
-2º
-Tenho duas colunas de valores no google sheets e quero fazer a porcentagem de diferença dos valores, como posso fazer?
-Considerar as colunas C e E, sendo a coluna C o valor do produto com desconto e a coluna E o valor integral do produto.
+### Google Sheets
+1. Como fazer uma análise exploratória em uma base de dados no Google Sheets?
+   - Resposta: Você pode usar o Google Sheets para realizar uma análise exploratória dos dados. Comece importando sua base de dados e utilize recursos como `Filtros`, `Gráficos` e `Funções` para analisar e visualizar os dados.
 
-3º
-Tenho uma coluna que está com valores de rúpia e quero transformar em real brasileiro, considerando uma variável que é o valor de conversão entre as duas moedas. Qual fórmula posso utilizar no Google Sheets?
+2. Como calcular a porcentagem de diferença entre dois valores no Google Sheets?
+   - Resposta: Para calcular a porcentagem de diferença entre dois valores, você pode subtrair o valor menor do valor maior e, em seguida, dividir o resultado pelo valor maior.
 
-Outra opção do Google Finance: 
-=GoogleFinance("CURRENCY:INRBRL")*F15
+3. Como converter valores de uma moeda estrangeira para real no Google Sheets?
+   - Resposta: Você pode usar a função `GoogleFinance` para obter a taxa de câmbio e, em seguida, multiplicar o valor em moeda estrangeira pela taxa de câmbio para convertê-lo em reais.
 
-4º 
-Como posso fazer um comando de um filtro para notas acima de 4.5 no GoogleSheets, sendo minha coluna de notas a coluna H.
+4. Como filtrar notas acima de 4.5 no Google Sheets?
+   - Resposta: Você pode usar a função `Filtros` no Google Sheets para filtrar notas acima de 4.5 em sua coluna de notas.
 
-5º
-Como posso fazer faixa de cores para os valores de porcentagem no googlesheets?
+5. Como aplicar faixas de cores para valores de porcentagem no Google Sheets?
+   - Resposta: Você pode usar a formatação condicional no Google Sheets para aplicar faixas de cores a valores de porcentagem com base em critérios predefinidos.
 
-6º
-Tenho uma coluna de preços de produtos na minha tabela do GoogleSheets e quero fazer um Countif de valores abaixo de 50 reais, valores entre 50 e 500 reais e valores maiores que 500 reais.
+6. Como contar valores em faixas de preços no Google Sheets?
+   - Resposta: Você pode usar a função `COUNTIF` no Google Sheets para contar valores abaixo de 50 reais, valores entre 50 e 500 reais e valores acima de 500 reais.
 
-=COUNTIF(dados!G:G; "<50")
+7. Como calcular a média dos valores dentro de faixas de preços no Google Sheets?
+   - Resposta: Você pode usar funções como `AVERAGEIF` para calcular a média dos valores dentro de faixas de preços no Google Sheets.
 
-=COUNTIF(dados!G:G; ">=50") - =COUNTIF(dados!G:G; ">500")
+8. Como calcular a média ponderada de avaliações com base na quantidade de avaliações?
+   - Resposta: Você pode usar a fórmula `SUMPRODUCT` para calcular a média ponderada das avaliações com base na quantidade de avaliações.
 
-7º
-Tenho uma coluna de valores de produtos e já classifiquei ela entre:
--valores menores de 50 reais;
-- entre 50 e 500 reais;e
-- maiores que 500 reais
-Quero saber a média dos valores dentro desses intervalos.
-Como posso fazer isso no googlesheets?
+9. Como criar um gráfico com base em um filtro de avaliações acima de 4,5 no Google Sheets?
+   - Resposta: Você pode aplicar um filtro para selecionar avaliações acima de 4,5 e, em seguida, criar um gráfico com base nos dados filtrados.
 
-8º
-Troque MÉDIA.SE por AVERAGEIF nas funções acima.
+### Python no Google Colab
+10. Como realizar uma análise exploratória de dados em um arquivo CSV no Google Colab?
+   - Resposta: No Google Colab, você pode usar bibliotecas como Pandas, NumPy, Matplotlib e Seaborn para realizar uma análise exploratória de dados em um arquivo CSV.
 
-9º
-No GoogleSheets tenho uma coluna de avaliações de cada produto (na coluna H) e uma coluna com a quantidade de pessoas que avaliaram esse produto (na coluna I). Quero fazer uma média ponderada entre a quantidade de pessoas que avaliaram em relação à nota final. Existe alguma fórmula que pode me ajudar com isso?
+11. Como remover o símbolo da moeda de valores em Rúpia Indiana no Python?
+   - Resposta: Utilize as funções de manipulação de strings para remover o símbolo da moeda e converter os valores em números.
 
-=SUMPRODUCT(dados!H2:H ; dados!I2:I) / SUM(dados!I2:I)
+12. Como criar um gráfico de barras para contar avaliações acima de 4,5 no Python?
+   - Resposta: Use Pandas e Seaborn para filtrar avaliações acima de 4,5 e criar um gráfico de barras mostrando a contagem dessas avaliações.
 
-10º 
-Como posso criar um gráfico baseado em um filtro de avaliações acima de 4,5 na tabela dados, dentro do GoogleSheets?
+13. Como criar um gráfico de pizza para mostrar a contagem de produtos em faixas de preço no Python?
+   - Resposta: Use Pandas e Matplotlib para criar um gráfico de pizza mostrando a contagem de produtos em diferentes faixas de preço.
 
-11º
-Qual a melhor visualização para um COUNTIF no GoogleSheets e como posso fazê-la?
+## Extensão SheetGPT
+O repositório também inclui a extensão "SheetGPT" que permite a tradução de avaliações, criação de resumos e análise de sentimentos a partir de texto em português.
 
-12º
-Como posso separar os valores de texto de uma célula, sabendo que a separação ocorre ao utilizar o caractere "|". Eu só quero o texto antes do primeiro caracter "|" aparecer.
+## Aprendizado de Máquina
+Além dos tópicos acima, o curso também abordou conceitos e práticas relacionadas ao aprendizado de máquina, que não estão incluídos neste README.
 
-=LEFT( C2; SEARCH("|"; C2) -1)
+## Conexão de Bases de Dados
+14. Como conectar duas tabelas com uma coluna em comum no Google Sheets?
+   - Resposta: Use a função `VLOOKUP` para conectar duas tabelas com base em uma coluna em comum.
 
-13º
-Como posso separar os valores de texto de uma célula C2, sabendo que a separação ocorre ao utilizar o caracter "|". Eu só quero o texto entre o primeiro caracter "|" e o segundo caracter "|".
+## Pensando com o ChatGPT
+15. Exemplo de como o ChatGPT pode ser usado para resolver problemas complexos, como cálculos e análises avançadas.
 
-=MID (C2; FIND("|"; C2) +1; FIND("|"; C2; FIND("|"; C2) +1) - FIND("|";C2) -1)
+## Utilização do Google Colab
+17. Como realizar análise exploratória de dados em um arquivo CSV no Google Colab com exemplos de código Python.
 
-CONECTE PLANILHAS + ENGENHARIA DE PROMPTS
+## Conclusão
+Este repositório contém recursos e exemplos práticos para a análise de dados no Google Sheets e no Google Colab, abordando tarefas comuns de análise de dados e manipulação de informações. Esperamos que esse material seja útil para sua jornada na análise de dados e aprendizado de máquina.
 
-CONECTAR BASES DIFERENTES COM 1 COLUNA EM COMUM - GOOGLE SHEETS
-14º
-Como consigo conectar 2 tabelas diferentes (dados e avaliações) que tem uma coluna em comum (Coluna A) usando o GoogleSheets
-
-=VLOOKUP( A2 ; avaliacoes!A:G ; 2 ; FALSE)
-
-15º
-Extensão SheetGPT
-PROMPTs
-
-=GPT("Traduza essa avaliação do inglês para o português" &N2)
-
-=GPT("Faça um resumo de até 25 palavras do texto em português" &O2)
-
-=GPT("Faça um ranking do sentimento do texto, escolha um desses sentimentos: muito positivo, positivo, neutro, ruim, muito ruim" &O2)
-
-16º
-PROMPT QUE ENSINA O CHAT A PENSAR:
-Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma de valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem e me diga qual é o meu resultado final?
-
-R$10.000,00
-R$20.000,00
-R$50.000,00
-R$60.000,00
-
-Resposta: Nessa lista, existem 4 valores. Há 2 valores acima de R$40.000,00 que são R$50.000,00 e R$60.000,00. A soma desses valores é R$110.000,00. O resultado fina é 30% da soma desses valores, portanto, 30% de R$110.000,00 que resulta em R$33.000,00.
-
-Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma de valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem e me diga qual é o meu resultado final?
-
-COLAR OS VALORES QUE PRECISAM SER ANALISADOS (DADOS "REAIS")
-
-Resposta:
-
-17º
-
-Abrir o Colab.new da google (ambiente jupyter)
-Tenho uma planilha em csv e quero fazer uma análise exploratória nela dentro do Google Colab, como posso fazer?
-
-Linhas de códigos utilizadas:
-
-Carregamento bibliotecas
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-Carregamento das bases de dados
-dados = pd.read_csv('/content/Dados_Imersão [faça uma cópia para editar] - dados.csv')
-avaliacoes = pd.read_csv('/content/Avaliacoes [Faça uma cópia para editar] - avaliacoes.csv')
-
-Comandos inciais
-dados.head() para visualizar as primeiras linhas do DataFrame.
-dados.info() para obter informações sobre os tipos de dados e valores ausentes.
-dados.describe() para obter estatísticas resumidas das colunas numéricas.
-dados.columns para listar as colunas disponíveis.
-
-Como os dados estão crus e precisam ser corrigidos serão solicitados os comandos para o cahtGPT, seguem os prompts:
-
-Tenho uma coluna de dados de valores em rúpia indiana, porém quero remover o símbolo da moeda, como posso fazer no python?
-
-dados['actual_price'] = dados['actual_price'].str.replace('₹', '')
-dados['actual_price'] = dados['actual_price'].str.replace('.', '')
-dados['actual_price'] = dados['actual_price'].str.replace(',', '.')
-dados['actual_price'] = pd.to_numeric(dados['actual_price'])
-
-dados['product_price'] = dados['product_price'].str.replace('₹', '')
-dados['product_price'] = dados['product_price'].str.replace('.', '')
-dados['product_price'] = dados['product_price'].str.replace(',', '.')
-dados['product_price'] = dados['product_price'].astype(float)
-
-dados['rating'] = dados['rating'].str.replace(',', '.')
-
-Prompt do CHATGPT Para Criação de Gráficos
-
-Tenho uma coluna de avaliações de produtos que se chama rating e quero fazer um gráfico de barras fazendo contagem de todos os valores acima de 4.5 como posso fazer no python? Sendo meu dataframe chamado dados
-
-avaliacoes_acima_de_45 = dados[dados['rating'] > 4.5]
-avaliacoes_contagem = avaliacoes_acima_de_45['rating'].value_counts().sort_index()
-
-plt.figure(figsize=(10,6))
-sns.barplot(x=avaliacoes_contagem.index, y=avaliacoes_contagem.values)
-plt.title('Contagens de Avaliações Acima de 4.5')
-plt.xlabel('Avaliacão')
-plt.ylabel('Contagem')
-plt.show()
-
-Prompt
-Tenho uma coluna de valores de produtos chamada actual_price, onde quero fazer 3 filtros: valores até 50 rúpias, valores entre 50 rúpias e 500 rúpias e valores maiores que 500 rúpias. Depois de fazer o filtro quero fazer um gráfico de pizza para mostrar a contagem de produtos de cada faixa de valor e com o maior valor sendo destacado.
-
-import pandas as pd
-import matplotlib.pyplot as plt
-# Filtre os valores até 50 rúpias
-faixa_1 = dados[dados['actual_price'] <= 50]
-
-# Filtre os valores entre 50 e 500 rúpias
-faixa_2 = dados[(dados['actual_price'] > 50) & (dados['actual_price'] <= 500)]
-
-# Filtre os valores acima de 500 rúpias
-faixa_3 = dados[dados['actual_price'] > 500]
-contagem_faixa_1 = len(faixa_1)
-contagem_faixa_2 = len(faixa_2)
-contagem_faixa_3 = len(faixa_3)
-
-# Defina os rótulos para as fatias do gráfico
-rotulos = ['Até 50 rúpias', 'Entre 50 e 500 rúpias', 'Acima de 500 rúpias']
-
-# Defina os valores correspondentes às contagens em cada faixa
-valores = [contagem_faixa_1, contagem_faixa_2, contagem_faixa_3]
-
-# Destaque a faixa com o maior valor
-explode = (0.1, 0.1, 0.2)
-
-# Crie o gráfico de pizza
-plt.pie(valores, labels=rotulos, autopct='%1.1f%%', explode=explode, shadow=True)
-plt.axis('equal')  # Assegura que o gráfico seja uma circunferência
-
-# Adicione um título
-plt.title('Contagem de Produtos por Faixa de Preço')
-
-# Exiba o gráfico
-plt.show()
-
-
+Aproveite o aprendizado!
 
 
 
